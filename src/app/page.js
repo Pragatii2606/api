@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "./components/productCard";
+// import ProductCard from "./components/productCard";
+// import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -45,8 +47,8 @@ export default function Home() {
     } else if (sortBy === "priceHigh") {
       result.sort((a, b) => b.price - a.price);
     }
-
-    setFilteredProducts(result);
+setFilteredProducts(result);
+    
   }, [searchTerm, category, sortBy, products]);
 
   const uniqueCategories = ["all", ...new Set(products.map((p) => p.category))];
