@@ -47,6 +47,7 @@ export default function Home() {
     } else if (sortBy === "priceHigh") {
       result.sort((a, b) => b.price - a.price);
     }
+    
 setFilteredProducts(result);
     
   }, [searchTerm, category, sortBy, products]);
@@ -55,6 +56,12 @@ setFilteredProducts(result);
 
   if (loading)
     return <div className="text-center p-20 font-bold">Loading Allure...</div>;
+
+  const resetFilters = () => {
+  setSearchTerm("");
+  setCategory("all");
+  setSortBy("az");
+};
 
   return (
     <div className="max-w-[1720px] p-6">
@@ -90,6 +97,7 @@ setFilteredProducts(result);
                     </option>
                   ))}
                 </select>
+                
               </div>
 
               <div>
@@ -108,6 +116,8 @@ setFilteredProducts(result);
                   <option value="priceHigh">Price: High to Low</option>
                 </select>
               </div>
+              <button onClick={resetFilters} className="w-full mt-4 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900 transition">
+              Reset Filters</button>
             </div>
           </div>
         </aside>
